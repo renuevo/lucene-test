@@ -1,3 +1,5 @@
+package com.github.renuevo.lucene;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
@@ -17,22 +19,12 @@ class AnalyzerUtils{
 
     public static void displayTokens(TokenStream stream) throws IOException {
 
-        //텀 속성 확인
         CharTermAttribute cattr = stream.addAttribute(CharTermAttribute.class);
-
-        //위치 증가값 속성 확인
         PositionIncrementAttribute postAtrr = stream.addAttribute(PositionIncrementAttribute.class);
-
-        //오프셋 위치 확인
         OffsetAttribute offsetAttr = stream.addAttribute(OffsetAttribute.class);
-
-        //텀타입 속성 확인
         TypeAttribute typeAttr = stream.addAttribute(TypeAttribute.class);
-
         stream.reset();
         int position = 0;
-
-
 
         while (stream.incrementToken()) {
 
@@ -45,7 +37,6 @@ class AnalyzerUtils{
         }
 
         stream.end();
-
         stream.close();
 
     }
